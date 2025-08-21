@@ -44,14 +44,75 @@ print("--- Problema 4 ---")
 """La variable dependiente es el largo del cable instalado en kilmetros, y la variable independiente es el tiempo transcurrido"""
 """Donde C(h) es largo del cable instalado en kms. y h es el tiempo transcurrido en horas"""
 h=6600/1.85
-print(f"{h:.1f}")
+print(f"\n{h:.1f}\n")
 def C(h):
    return 1.8*h
 import matplotlib.pyplot as plt
 import numpy as np
 h=np.arange(0,3570,1)
 plt.plot(h,C(h))
-plt.tittle("Relacion entre el largo del cable del instalado y tiempo transcurrido")
+plt.title("Relacion entre el largo del cable del instalado y tiempo transcurrido")
 plt.xlabel("Tiempo transcurrido (horas)")
 plt.grid(True)
 plt.show()
+
+#Problema 5
+print("--- Problema 5 ---")
+"""Definir rango de valores del tiempo y las funciones"""
+tiempo=np.arange(0,26,1)
+metro=0.4*tiempo
+bus=0.3*tiempo
+
+plt.plot(tiempo, metro, label="Metro")
+plt.plot(tiempo, bus, label="bus")
+plt.title("Relación entre la distancia recorrida en medio de transporte y el tiempo")
+plt.xlabel("Tiempo transcurrido (minutos)")
+plt.ylabel("Distancia recorrida (kilometros)")
+plt.grid(True)
+plt.legend()
+plt.show()
+
+"""Estimar el límite superior del dominio f(t)"""
+dom=round(9*1.2+8*0.5,1)
+print(f"\nEl dominio contextualizado de f(t): [0; {dom}]")
+k=6
+m=k/0.4
+b=k/0.3
+print(f"El turista tardará {m}  minutos en metro y {b} minutos en bus, si la disntacia es 6km.")
+
+
+print("--- Problema 6 ---")
+# Definición de la función
+def temperatura(t):
+    return -0.5 * t**2 + 3 * t + 20
+
+# Dominio contextualizado
+t = np.arange(0,9,1)
+
+# Valores de temperatura
+T = temperatura(t)
+
+plt.figure(figsize=(8,5))
+plt.plot(t + 8, T, label="Temperatura del servidor")
+plt.title("Temperatura del servidor durante la jornada laboral")
+plt.xlabel("Hora del día")
+plt.ylabel("Temperatura (°C)")
+plt.xticks(range(8, 18))  # Marcar horas desde 8 a 17
+plt.grid(True)
+plt.legend()
+plt.show()
+
+# Cálculo de temperatura máxima
+t_max = -3 / (2 * -0.5)
+T_max = temperatura(t_max)
+print(f"El servidor alcanza la temperatura máxima a las {t_max + 8:.2f} horas con {T_max:.2f} °C")
+
+# Temperaturas a las 13:00 y 17:00 horas
+t_13 = 13 - 8
+t_17 = 17 - 8
+
+T_13 = temperatura(t_13)
+T_17 = temperatura(t_17)
+
+print(f"Temperatura a las 13:00 horas: {T_13:.2f} °C")
+print(f"Temperatura a las 17:00 horas: {T_17:.2f} °C")
